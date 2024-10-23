@@ -1,0 +1,69 @@
+name: 'Prepare service params'
+description: 'Prepare service params'
+author: 'Alexey Savelyev'
+inputs:
+    env_type:
+        description: 'Environment type'
+        required: false
+        default: 'prod'
+    repository_owner:
+        description: 'Repository owner'
+        required: true
+    repository_name:
+        description: 'Repository name'
+        required: true
+    branch_name:
+        description: 'Branch name'
+        required: true
+    image_version:
+        description: 'Image version'
+        required: false
+        default: 'latest'
+    server_name:
+        description: 'Server name'
+        required: false
+
+outputs:
+    env_type:
+        description: 'Environment type (in lower case)'
+    env_type_postfix:
+        description: 'Environment tag (in lower case)'
+    repository_owner:
+        description: 'Repository owner (in lower case)'
+    repository_name:
+        description: 'Repository name (in lower case)'
+    branch_name:
+        description: 'Branch name (in lower case)'
+    image_version:
+        description: 'Image version (in lower case)'
+    service_network:
+        description: 'Service network (in lower case)'
+    container_name:
+        description: 'Container name (in lower case)'
+    container_short_name:
+        description: 'Container short name (in lower case)'
+    server_name:
+        description: 'Server name (in lower case)'
+    server_short_name:
+        description: 'Server short name (in lower case)'
+    service_target_folder:
+        description: 'Service target folder (in lower case)'
+    domain_name:
+        description: 'Service domain name (in lower case)'
+
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+    - '--env_type'
+    - ${{ inputs.env_type }}
+    - '--repository_owner'
+    - ${{ inputs.repository_owner }}
+    - '--repository_name'
+    - ${{ inputs.repository_name }}
+    - '--branch_name'
+    - ${{ inputs.branch_name }}
+    - '--image_version'
+    - ${{ inputs.image_version }}
+    - '--server_name'
+    - ${{ inputs.server_name }}
