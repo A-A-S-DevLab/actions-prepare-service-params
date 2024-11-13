@@ -23,7 +23,7 @@ public class EnvPrepareService : IEnvPrepareService
         actionOutputs.ServiceNetwork = $"{actionOutputs.RepositoryName}-network{actionOutputs.EnvTypePostfix}";
         
         actionOutputs.ContainerName = $"{actionOutputs.RepositoryName}{actionOutputs.EnvTypePostfix}";
-        actionOutputs.ContainerShortName = actionOutputs.ContainerName.KebabCaseSecondWord();
+        actionOutputs.ContainerShortName = actionOutputs.ContainerName.KebabCaseDeleteFirstWord();
 
         actionOutputs.ServerName = actionInputs.ServerName.Clear();
         actionOutputs.ServerShortName = actionOutputs.ServerName.KebabCaseSecondWord();

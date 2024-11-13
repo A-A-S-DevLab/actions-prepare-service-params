@@ -17,4 +17,13 @@ public static class StringExtension
             ? null
             : words[1].Clear();
     }
+    
+    public static string KebabCaseDeleteFirstWord(this string line)
+    {
+        var words = line.Split("-");
+        
+        return words.Length < 2
+            ? null
+            : string.Join("-", words[1..]).Clear();
+    }
 }
