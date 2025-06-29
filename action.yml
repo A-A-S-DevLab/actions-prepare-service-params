@@ -22,6 +22,9 @@ inputs:
     server_name:
         description: 'Server name'
         required: false
+    instance_name:
+        description: 'Instance name'
+        required: false
 
 outputs:
     env_type:
@@ -50,6 +53,10 @@ outputs:
         description: 'Service target folder (in lower case)'
     domain_name:
         description: 'Service domain name (in lower case)'
+    instance_name:
+        description: 'Instance name (in lower case)'
+    instance_name_postfix:
+        description: 'Instance name (in lower case)'
 
 runs:
     using: 'docker'

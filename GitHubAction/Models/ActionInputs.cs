@@ -32,4 +32,9 @@ public class ActionInputs
         Required = false,
         HelpText = "Server name")]
     public string ServerName { get; set; } = null!;
+
+    [Option("instance_name",
+        Required = false,
+        HelpText = "Instance name (in lower case)")]
+    public string InstanceName { get; set; } = null;
 }

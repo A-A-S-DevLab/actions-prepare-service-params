@@ -17,6 +17,7 @@ Add this step in your workflow file
         branch_name: ${{ env.BRANCH_NAME }}
         image_version: ${{ env.IMAGE_VERSION }}
         server_name: ${{ env.SERVER_NAME }}
+        instance_name: ${{ env.INSTANCE_NAME }}
 
 -   name: Move service params to env
     run: |
@@ -34,6 +35,8 @@ Add this step in your workflow file
         echo "SERVICE_TARGET_FOLDER=${{steps.prepare_service_params.outputs.service_target_folder}}" >> ${GITHUB_ENV}
         echo "DOMAIN_NAME=${{steps.prepare_service_params.outputs.domain_name}}" >> ${GITHUB_ENV}
         echo "LOCAL_CONFIG_IS_EXIST=${{steps.prepare_service_params.outputs.local_config_is_exist}}" >> ${GITHUB_ENV}
+        echo "INSTANCE_NAME=${{steps.prepare_service_params.outputs.instance_name}}" >> ${GITHUB_ENV}
+        echo "INSTANCE_NAME_POSTFIX=${{steps.prepare_service_params.outputs.instance_name_postfix}}" >> ${GITHUB_ENV}
 ```
 
 ## Input variables
@@ -44,6 +47,7 @@ Add this step in your workflow file
 - `branch_name`: Branch name
 - `image_version`: Image version
 - `server_name`: Server name
+- `instance_name`: Instance name
 
 ## Outputs variables
 
@@ -60,3 +64,5 @@ Add this step in your workflow file
 - `server_short_name`: Server short name (in lower case)
 - `service_target_folder`: Service target folder (in lower case)
 - `domain_name`: Service domain name (in lower case)
+- `instance_name`: Instance name (in lower case)
+- `instance_name_postfix`: Instance name (in lower case)

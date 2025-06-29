@@ -11,8 +11,10 @@ public class EnvPrepareService : IEnvPrepareService
         var actionOutputs = new ActionOutputs();
         
         actionOutputs.EnvType = actionInputs.EnvType.Clear() ?? Constants.Constants.Prod;
-
         actionOutputs.EnvTypePostfix = Constants.Constants.EnvSuffixes[actionOutputs.EnvType];
+        
+        actionOutputs.InstanceName = actionInputs.InstanceName.Clear() ?? string.Empty;
+        actionOutputs.InstanceNamePostfix = $"-{actionOutputs.InstanceName}";
         
         actionOutputs.RepositoryName = actionInputs.RepositoryName.Clear();
         actionOutputs.RepositoryOwner = actionInputs.RepositoryOwner.Clear();
@@ -20,9 +22,9 @@ public class EnvPrepareService : IEnvPrepareService
         
         actionOutputs.ImageVersion = actionInputs.ImageVersion.Clear();
         
-        actionOutputs.ServiceNetwork = $"{actionOutputs.RepositoryName}-network{actionOutputs.EnvTypePostfix}";
+        actionOutputs.ServiceNetwork = $"{actionOutputs.RepositoryName}-network{actionOutputs.EnvTypePostfix}{actionOutputs.InstanceNamePostfix}";
         
-        actionOutputs.ContainerName = $"{actionOutputs.RepositoryName}{actionOutputs.EnvTypePostfix}";
+        actionOutputs.ContainerName = $"{actionOutputs.RepositoryName}{actionOutputs.EnvTypePostfix}{actionOutputs.InstanceNamePostfix}";
         actionOutputs.ContainerShortName = actionOutputs.ContainerName.KebabCaseDeleteFirstWord();
 
         actionOutputs.ServerName = actionInputs.ServerName.Clear();

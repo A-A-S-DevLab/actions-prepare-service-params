@@ -60,4 +60,12 @@ public class ActionOutputs
     [Option("domain_name",
         HelpText = "Service domain name (in lower case)")]
     public string DomainName { get; set; }
+
+    [Option("instance_name",
+        HelpText = "Instance name (in lower case)")]
+    public string InstanceName { get; set; }
+
+    [Option("instance_name_postfix",
+        HelpText = "Instance name (in lower case)")]
+    public string InstanceNamePostfix { get; set; }
 }
